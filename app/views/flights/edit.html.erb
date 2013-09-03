@@ -1,0 +1,31 @@
+<h1>Editing Flight #<%= @flight.id %></h1>
+
+
+<%= form_tag(flight_url(@flight), method: 'patch') do %>
+
+  <div>
+    <%= label_tag :departs_at %><br />
+    <%= datetime_select_tag :departs_at, @flight.departs_at %>
+  </div>
+
+  <div>
+    <%= label_tag :departure_code %><br />
+    <%= text_field_tag :departure_code, @flight.departure_code %>
+  </div>
+
+  <div>
+    <%= label_tag :arrival_code %><br />
+    <%= text_field_tag :arrival_code, @flight.arrival_code %>
+  </div>
+
+  <div>
+    <%= label_tag :seats %><br />
+    <%= number_field_tag :seats, @flight.seats %>
+  </div>
+
+  
+  <div>
+    <%= submit_tag "Update Flight" %>
+  </div>
+
+<% end %>

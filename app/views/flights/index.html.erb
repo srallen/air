@@ -1,0 +1,30 @@
+<h1 class="page-header">Flight Schedule</h1>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Flight #</th>
+      <th>Departs at</th>
+      <th>Departs From</th>
+      <th>Arrives</th>
+      <th>Miles</th>
+      <th>Seats Remaining</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @flights.each do |flight| %>
+    <tr>
+      <td><%= flight.number %></td>
+      <td><%= flight.departs_at %></td>
+      <td><%= flight.departure_code %></td>
+      <td><%= flight.arrival_code %></td>
+      <td><%= flight.distance %></td>
+      <td><%= flight.seats %></td>
+      <td> <%= link_to "Book Now", '#', class: 'btn btn-xs btn-primary'%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
