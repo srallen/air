@@ -4,8 +4,4 @@ class FlightsController < ApplicationController
     @flights = Flight.order('departs_at').limit(50)
   end
 
-  def show
-    @flight = Flight.find(params[:id])
-  end
-
 end

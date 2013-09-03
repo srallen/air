@@ -14,4 +14,9 @@
 //= require bootstrap.min
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.ui.all
 //= require_tree .
+
+$(function() {
+  $("#departs_on").datepicker();
+});

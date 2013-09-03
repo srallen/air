@@ -1,30 +1,46 @@
-<h1 class="page-header">Flight Schedule</h1>
+<div class="page-header">
+  <h1>Flight Schedule</h1>
 
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th>Flight #</th>
-      <th>Departs at</th>
-      <th>Departs From</th>
-      <th>Arrives</th>
-      <th>Miles</th>
-      <th>Seats Remaining</th>
-      <th></th>
-    </tr>
-  </thead>
+    <%= form_tag flights_url, method: 'get', id: 'flight-search' do %>
+      <div>
+        <%= label_tag :departs_from, 'Display flights departing from:' %>
+        <%= select_tag :departs_from, options_for_select(MileageCalculator::AIRPORT_CODES) %>
+        <%= label_tag :departs_on, 'departing on:' %>
+        <%= text_field_tag :departs_on, Date.today, placeholder: 'Pick date...' %>
+        <%= button_tag 'Go', class: 'btn btn-success btn-small' %>
+      </div>
+    <% end %>
 
-  <tbody>
-  <% @flights.each do |flight| %>
-    <tr>
-      <td><%= flight.number %></td>
-      <td><%= flight.departs_at %></td>
-      <td><%= flight.departure_code %></td>
-      <td><%= flight.arrival_code %></td>
-      <td><%= flight.distance %></td>
-      <td><%= flight.seats %></td>
-      <td> <%= link_to "Book Now", '#', class: 'btn btn-xs btn-primary'%></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+</div>
 
+<div class="row">
+  <div class="col-md-12">
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <th>Flight #</th>
+          <th>Departs at</th>
+          <th>Departs From</th>
+          <th>Arrives</th>
+          <th>Miles</th>
+          <th>Seats Remaining</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% @flights.each do |flight| %>
+        <tr>
+          <td><%= flight.number %></td>
+          <td><%= flight.departs_at %></td>
+          <td><%= flight.departure_code %></td>
+          <td><%= flight.arrival_code %></td>
+          <td><%= flight.distance %></td>
+          <td><%= flight.seats %></td>
+          <td> <%= link_to "Book Now", '#', class: 'btn btn-xs btn-primary'%></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

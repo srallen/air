@@ -10,7 +10,7 @@ Flight.destroy_all if Rails.env.development?
     flight.departs_at = day.days.from_now.midnight + (9 + hour).hours
     flight.departure_code = departure_airport
     flight.arrival_code = arrival_airport
-    flight.seats = rand(0..99)
+    flight.seats = rand(1..4) == 1 ? 0 : rand(0..99)
 
     flight.save
   end
