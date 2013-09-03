@@ -1,23 +1,24 @@
 module PagesHelper
 
   def challenge(text)
-    label = content_tag(:span, "Challenge", class: 'label label-default')
     content_tag :li do
-      label + text.html_safe
+      concat content_tag(:span, "Challenge", class: 'label label-default')
+      concat text
     end
   end
 
   def user_story(persona, text)
-    label = content_tag(:span, "User Story", class: 'label label-success')
+    item = "As a #{persona}, #{text}"
     content_tag :li do
-      label + "As a #{persona}, #{text}".html_safe
+      concat content_tag(:span, "User Story", class: 'label label-success')
+      concat item
     end
   end
 
   def business_rule(text)
-    label = content_tag(:span, "Business Rule", class: 'label label-primary')
     content_tag(:li) do
-      label + text.html_safe
+      concat content_tag(:span, "Business Rule", class: 'label label-primary')
+      concat text
     end
   end
 end
