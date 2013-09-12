@@ -8,7 +8,7 @@ class FlightsController < ApplicationController
     end
 
     if params[:departs_on]
-      @flights = @flights.where('departs_at = ?', params[:departs_on])
+      @flights = @flights.where('DATE(departs_at) = ?', params[:departs_on])
     end
 
     @flights = @flights.limit(50)
