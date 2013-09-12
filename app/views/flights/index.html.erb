@@ -32,6 +32,7 @@
       <% @flights.each do |flight| %>
         <tr>
           <td><%= flight.number %></td>
+          <td>
             <%= flight.departs_at.strftime("%b %d, %Y %H:%M") %>
             <%# Added strftime method %>
           </td>
