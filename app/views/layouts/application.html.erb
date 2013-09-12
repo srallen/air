@@ -33,11 +33,13 @@
           <li>
             <%= link_to flights_url do %>
               &#9992; Flights
+              <%# Line 35's airplane symbol is a unicode character and appears here using its HTML code. %>
             <% end %>
           </li>
           <li>
             <%= link_to cities_url do %>
               <i class="icon-building"></i>
+              <%# Lines 41 and 48 can use the icon tag and a CSS class to insert symbols from Font Awesome. Font Awesome is linked to in the head tag. %>
               Cities
             <% end %>
           </li>
