@@ -1,0 +1,14 @@
+<%= form_tag sessions_url do %>
+  <div>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+
+  <%= button_tag "Sign In" %>
+
+<% end %>
