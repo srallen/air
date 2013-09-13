@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130903001437) do
+ActiveRecord::Schema.define(version: 20130913182154) do
 
   create_table "flights", force: true do |t|
     t.integer  "number"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20130903001437) do
     t.string   "arrival_code"
     t.integer  "distance",       default: 0
     t.integer  "seats",          default: 0
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
