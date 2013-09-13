@@ -2,6 +2,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :current_user_must_be_user, only: [:show, :edit, :update, :destroy]
 
+    # Ensuring that current user cannot spoof as another user
+    def current_user_must_be_user
+      unless current_user == @user
+        redirect_to :back, notice: "You are not authorized to do that."
+      end
+    end
+
   # GET /users
   # GET /users.json
   def index
@@ -29,6 +36,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -63,12 +71,6 @@ class UsersController < ApplicationController
   end
 
   private
-    # Ensuring that current user cannot spoof as another user
-    def current_user_must_be_user
-      unless current_user == @user
-        redirect_to :back, notice: "You are not authorized to do that."
-      end
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_user
