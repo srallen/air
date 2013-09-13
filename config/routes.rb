@@ -10,5 +10,7 @@ Air::Application.routes.draw do
   root 'flights#index'
 
   get 'sessions/new' => 'sessions#new', as: "new_session"
+  post 'sessions' => 'sessions#create'
+  delete 'sessions' => 'sessions#destroy'
 
 end
