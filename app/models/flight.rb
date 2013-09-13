@@ -1,4 +1,5 @@
 class Flight < ActiveRecord::Base
+  belongs_to :user
 
   validates :distance, numericality: { greater_than: 0 }
 

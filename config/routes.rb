@@ -1,6 +1,6 @@
 Air::Application.routes.draw do
 
-  resources :users
+  resources :users, except: [:index]
 
   get 'cities' => "pages#cities"
   get "help" => 'pages#help'
