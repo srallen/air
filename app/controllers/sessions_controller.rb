@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by email: params[:email]
 
-    if @user.present && @user.authenticate(params(:password))
+    if @user.present? && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = 'Signed in successfully'
       redirect_to root_url
     else
-      # TODO add error handling
+      flash.now[:error] = "Incorrect email address or password."
       render 'new'
     end
   end
