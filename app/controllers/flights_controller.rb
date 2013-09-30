@@ -2,6 +2,7 @@ class FlightsController < ApplicationController
 
   def index
     @flights = Flight.order('departs_at')
+    @reservation = Reservation.new
 
     if params[:departs_from]
       @flights = @flights.where('departure_code = ?', params[:departs_from])

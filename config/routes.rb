@@ -1,6 +1,6 @@
 Air::Application.routes.draw do
 
-  resources :reservations
+  resources :reservations, only: [:create, :destroy]
 
   resources :users, except: [:index]
 
