@@ -12,50 +12,53 @@
 
   <p>
     <strong>Total Miles Earned:</strong>
-    <%=  %>
+    <%= @user.miles_earned %>
   </p>
 
   <p>
     <strong>My Reservations:</strong>
   </p>
-  <div class="row">
-    <div class="col-md-12">
-      <table class='table table-striped'>
-        <thead>
-          <tr>
-            <th>Flight #</th>
-            <th>Departs at</th>
-            <th>Departs From</th>
-            <th>Arrives</th>
-            <th>Miles</th>
-            <th>Seats Remaining</th>
-            <th>Cancel Flight?</th>
-          </tr>
-        </thead>
+  <% if @user.flights.present? %>
+    <div class="row">
+      <div class="col-md-12">
+        <table class='table table-striped'>
+          <thead>
+            <tr>
+              <th>Flight #</th>
+              <th>Departs at</th>
+              <th>Departs From</th>
+              <th>Arrives</th>
+              <th>Miles</th>
+              <th>Seats Remaining</th>
+              <th>Cancel Flight?</th>
+            </tr>
+          </thead>
 
-        <tbody>
-        <% @user.flights.each do |flight| %>
-          <tr>
-            <td><%= flight.number %></td>
-            <td>
-              <%= flight.departs_at.strftime("%b %d, %Y %H:%M") %>
-            </td>
-            <td><%= flight.departure_code %></td>
-            <td><%= flight.arrival_code %></td>
-            <td><%= flight.distance %></td>
-            <td><%= flight.seats %></td>
-            <td>
-              <button class="btn btn-xs btn-danger">Cancel</button>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+          <tbody>
+          <% @user.flights.each do |flight| %>
+            <tr>
+              <td><%= flight.number %></td>
+              <td>
+                <%= flight.departs_at.strftime("%b %d, %Y %H:%M") %>
+              </td>
+              <td><%= flight.departure_code %></td>
+              <td><%= flight.arrival_code %></td>
+              <td><%= flight.distance %></td>
+              <td><%= flight.seats %></td>
+              <td>
+                <button class="btn btn-xs btn-danger">Cancel</button>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-
+  <% else %>
+    <p>No reservations found. Please book some <%= link_to "flights.", root_url %></p>
+  <% end %>
 
   <%= link_to 'Edit My Profile', edit_user_path(@user) %> |
-  <%= link_to 'Back To Flight Searh', root_url %>
+  <%= link_to 'Back To Flight Search', root_url %>
 
 <% end %>
