@@ -1,14 +1,61 @@
 <p id="notice"><%= notice %></p>
+<% if current_user.present? %>
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Total Miles Earned:</strong>
+    <%=  %>
+  </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', root_url %>
+  <p>
+    <strong>My Reservations:</strong>
+  </p>
+  <div class="row">
+    <div class="col-md-12">
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Flight #</th>
+            <th>Departs at</th>
+            <th>Departs From</th>
+            <th>Arrives</th>
+            <th>Miles</th>
+            <th>Seats Remaining</th>
+            <th>Cancel Flight?</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @user.flights.each do |flight| %>
+          <tr>
+            <td><%= flight.number %></td>
+            <td>
+              <%= flight.departs_at.strftime("%b %d, %Y %H:%M") %>
+            </td>
+            <td><%= flight.departure_code %></td>
+            <td><%= flight.arrival_code %></td>
+            <td><%= flight.distance %></td>
+            <td><%= flight.seats %></td>
+            <td>
+              <button class="btn btn-xs btn-danger">Cancel</button>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <%= link_to 'Edit My Profile', edit_user_path(@user) %> |
+  <%= link_to 'Back To Flight Searh', root_url %>
+
+<% end %>
