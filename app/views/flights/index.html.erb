@@ -42,14 +42,19 @@
           <td><%= flight.seats %></td>
           <td>
             <% if current_user.present? %>
-              <%= form_for @reservation do |f| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.hidden_field :flight_id, value: flight.id %>
+              <%# Added if statement to prevent user from being able to click to book flights with no seats left. %>
+              <% if flight.seats > 0 %>
+                <%= form_for @reservation do |f| %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.hidden_field :flight_id, value: flight.id %>
 
-                <%= f.submit "Book Now", class: 'btn btn-xs btn-primary'%>
+                  <%= f.submit "Book Now", class: 'btn btn-xs btn-primary'%>
+                <% end %>
+              <% else %>
+                <button class="btn btn-xs btn-warning">No Seats Available</button>
               <% end %>
             <% else %>
-              <%= link_to "Book Now", new_session_path, class: 'btn btn-xs btn-primary' %>
+              <%= link_to "Book Now", new_session_path, notice: "Please log in to book a reservation.", class: 'btn btn-xs btn-primary' %>
             <% end %>
           </td>
         </tr>

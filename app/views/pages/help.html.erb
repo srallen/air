@@ -15,8 +15,8 @@
   <%= user_story :user, 'I want to sign in so I can make reservations and earn miles.' %>
   <%# Created reservation join table and associated model relationships. Added functionality to "book now" button. %>
   <%= user_story :user, 'I want to see my profile page listing my reservations and miles earned.' %>
-  <%# Added table to user show webpage, miles earned column to users, and custom model method to calculate earned miles. %>
   <%= business_rule "A user's profile page should list all reservations and miles earned." %>
+    <%# Added table to user show webpage, miles earned column to users, and custom model method to calculate earned miles. %>
   <%= business_rule 'A user earns miles as soon as they have paid for a reservation, not after they fly' %>
   <%= business_rule 'A user can only book flights if there are seats left on the flight.' %>
   <%= business_rule 'The available seat count must decrease by 1 every time someone books a seat on that flight.' %>

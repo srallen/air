@@ -46,7 +46,7 @@
               <td><%= flight.distance %></td>
               <td><%= flight.seats %></td>
               <td>
-                <button class="btn btn-xs btn-danger">Cancel</button>
+                <%= link_to "Cancel", reservation_path(flight.reservations.first.id), method: "delete", class: 'btn btn-xs btn-danger' %>
               </td>
             </tr>
           <% end %>

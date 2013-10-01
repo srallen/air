@@ -56,7 +56,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation.destroy
     respond_to do |format|
-      format.html { redirect_to reservations_url }
+      format.html { redirect_to user_url(current_user), notice: 'Reservation was successfully cancelled.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:user_id, :flight_id) if params[:reservation]
+      params.require(:reservation).permit(:user_id, :flight_id)
     end
 end
