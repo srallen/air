@@ -20,6 +20,7 @@
   <%= business_rule 'A user earns miles as soon as they have paid for a reservation, not after they fly' %>
   <%= business_rule 'A user can only book flights if there are seats left on the flight.' %>
   <%= business_rule 'The available seat count must decrease by 1 every time someone books a seat on that flight.' %>
+  <%# Added functionality for decrease when booking and increase when cancelling. %>
   <%= user_story :user, 'I want to book a flight.' %>
   <%= business_rule 'A user must pay by credit card when they book a flight, and we only accept Visa.' %>
   <%= business_rule 'Visa cards always start 16 digits long and begin with a 4.' %>
